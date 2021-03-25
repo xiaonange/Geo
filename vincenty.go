@@ -1,7 +1,6 @@
 package Geo
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -70,15 +69,14 @@ func (Vincenty)GetDistance(point1, point2 Coordinate)float64 {
 		}
 	}
 	if iterationLimit == 0 {
-		panic("")
+		panic("数据错误")
 	}
 	uSq := cosSqAlpha * (a*a - b*b) / (b * b)
 	A := 1 + uSq/16384*(4096+uSq*(- 768+uSq*(320-175*uSq)))
 	B := uSq / 1024 * (256 + uSq*(- 128+uSq*(74-47*uSq)))
 	deltaSigma := B * sinSigma * (cos2SigmaM + B/4*(cosSigma*(- 1+2*cos2SigmaM*cos2SigmaM)-B/6*cos2SigmaM*(- 3+4*sinSigma*sinSigma)*(- 3+4*cos2SigmaM*cos2SigmaM)))
 	s := b * A * (sigma - deltaSigma)
-	fmt.Println(s)
-	return math.Floor(s)
+	return s
 }
 
 //角度轉化為弧度

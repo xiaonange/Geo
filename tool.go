@@ -1,7 +1,6 @@
 package Geo
 
 import (
-	"fmt"
 	"math"
 )
 
@@ -49,8 +48,6 @@ func (this Tool)center(aPlace, bPlace Coordinate, r float64)Coordinate {
 	y1 := aPlace.Lng
 	x2 := bPlace.Lat
 	y2 := bPlace.Lng
-	fmt.Println(x1,y1,x2,y2)
-	fmt.Println(math.Pow(x2, 2) - math.Pow(x1, 2) + math.Pow(y2, 2) - math.Pow(y1, 2))
 	C1 := (math.Pow(x2, 2) - math.Pow(x1, 2) + math.Pow(y2, 2) - math.Pow(y1, 2)) / 2 / (x2 - x1)
 	C2 := (y2 - y1) / (x2 - x1)
 	A := math.Pow(C2, 2) + 1
@@ -92,9 +89,7 @@ func GetDistance(aPlace,bPlace Coordinate) float64 {
 func (this Tool)GetPaints(point1,point2 Coordinate)[]Coordinate {
 	point1 = this.JTP(point1)
 	point2 = this.JTP(point2)
-	fmt.Println(point1,point2)
 	center := this.center(point1, point2, BaseAngle)
-	fmt.Println(center)
 	//零点
 	c := point1.Lat - center.Lat
 	b := point1.Lng - center.Lng
