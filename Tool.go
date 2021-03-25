@@ -12,7 +12,7 @@ type Tool struct {
 }
 
 const (
-	R = 6371.393 * 1000;    // 常量，地球半径，单位：米
+	R = 6371.393 * 1000    // 常量，地球半径，单位：米
 	BaseAngle = 7070  //角度計算基數
 )
 
@@ -32,8 +32,8 @@ func (this Tool)JTP(input Coordinate) Coordinate {
 
 //平面坐标转经纬度
 func (this Tool)PTJ(input Coordinate) Coordinate {
-	input.Lng = input.Lng*180/(R*math.Pi) + this.StartBase.Lat;
-	input.Lat = input.Lat*180/(this.BaseR*math.Pi) + this.StartBase.Lng;
+	input.Lng = input.Lng*180/(R*math.Pi) + this.StartBase.Lat
+	input.Lat = input.Lat*180/(this.BaseR*math.Pi) + this.StartBase.Lng
 	return input
 }
 
@@ -49,21 +49,21 @@ func (this Tool)center(aPlace, bPlace Coordinate, r float64)Coordinate {
 	y1 := aPlace.Lng
 	x2 := bPlace.Lat
 	y2 := bPlace.Lng
-	fmt.Println(x1,y1,x2,y2);
+	fmt.Println(x1,y1,x2,y2)
 	fmt.Println(math.Pow(x2, 2) - math.Pow(x1, 2) + math.Pow(y2, 2) - math.Pow(y1, 2))
 	C1 := (math.Pow(x2, 2) - math.Pow(x1, 2) + math.Pow(y2, 2) - math.Pow(y1, 2)) / 2 / (x2 - x1)
 	C2 := (y2 - y1) / (x2 - x1)
 	A := math.Pow(C2, 2) + 1
 	B := 2*x1*C2 - 2*C1*C2 - 2*y1
-	C := math.Pow(x1, 2) - 2*x1*C1 + math.Pow(C1, 2) + math.Pow(y1, 2) - math.Pow(r, 2);
+	C := math.Pow(x1, 2) - 2*x1*C1 + math.Pow(C1, 2) + math.Pow(y1, 2) - math.Pow(r, 2)
 	Delta := math.Pow(B, 2) - 4*A*C
 	var y01, y02, x01, x02 float64
 	if Delta >= 0 {
 		Delta = math.Pow(Delta, 0.5)
-		y01 = (-B + Delta) / 2 / A;
-		y02 = (-B - Delta) / 2 / A;
-		x01 = C1 - C2*y01;
-		x02 = C1 - C2*y02;
+		y01 = (-B + Delta) / 2 / A
+		y02 = (-B - Delta) / 2 / A
+		x01 = C1 - C2*y01
+		x02 = C1 - C2*y02
 	} else {
 		panic("无解")
 	}

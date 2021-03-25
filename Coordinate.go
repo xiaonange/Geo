@@ -73,12 +73,12 @@ func isNumericInBounds(value, lower,upper float64) bool {
  * @return float
  */
 func (this Coordinate)GetLat() float64{
-return this.Lat;
+return this.Lat
 }
 
 /**
  * @return float
  */
 func (this Coordinate)GetLng() float64{
-	return this.Lng;
+	return this.Lng
 }

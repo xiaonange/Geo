@@ -64,7 +64,7 @@ func (this Polygon)getNumberOfPoints()int {
 func (this Polygon)Contains(point Coordinate) bool {
 	numberOfPoints := this.getNumberOfPoints()
 	polygonLats := this.GetLats()  //经度
-	polygonLngs := this.GetLngs(); //纬度
+	polygonLngs := this.GetLngs() //纬度
 	polygonContainsPoint := false
 	altNode := numberOfPoints - 1
 	for node := 0; node < numberOfPoints; node++ {

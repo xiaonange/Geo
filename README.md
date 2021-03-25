@@ -5,7 +5,7 @@
 * 获取两点之间的圆弧坐标点
 * 判断点是否在多边形内
 ```
-     //判斷是否在區域內
+     //判斷是否在區域內，true/false
 	polygon := new(Geo.Polygon)
 	polygon = polygon.AddPoint(Geo.Coordinate{Lng: 116.248445, Lat:39.997954})
 	polygon = polygon.AddPoint(Geo.Coordinate{Lng: 116.52585, Lat:40.002162})
@@ -15,11 +15,11 @@
 
 
 ```
-	//獲取兩點之間距離
-	vincenty := new(Geo.Vincenty)
-	lat1 := Geo.Coordinate{Lng: 116.248445, Lat:39.997954,Ellipsoid:new(Geo.Ellipsoid).GetWGS84()}
-	lat2 :=Geo.Coordinate{Lng:116.586275, Lat:39.869486,Ellipsoid:new(Geo.Ellipsoid).GetWGS84()}
-	fmt.Println(vincenty.GetDistance(lat1,lat2))
+      //獲取兩點之間距離
+	     vincenty := new(Geo.Vincenty)
+	     lat1 := Geo.Coordinate{Lng: 116.248445, Lat:39.997954,Ellipsoid:new(Geo.Ellipsoid).GetWGS84()}
+	     lat2 :=Geo.Coordinate{Lng:116.586275, Lat:39.869486,Ellipsoid:new(Geo.Ellipsoid).GetWGS84()}
+	     fmt.Println(vincenty.GetDistance(lat1,lat2)) //單位米
 
 ```
 	//獲取多個點的中心點
